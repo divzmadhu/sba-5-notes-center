@@ -56,14 +56,52 @@ let editingPostId = null;
 const localPosts = "notesCenterPosts";
 
 
+function validateForm() {
+
+    let isValid = true;
+
+
+    titleInputError.textContent = "";
+    dateInputError.textContent = "";
+    categoryInputError.textContent = "";
+    contentInputError.textContent = "";
+
+
+    if (titleInput.value.trim() === "")
+    {
+        titleInputError.textContent = "Please enter a title.";
+        isValid = false;
+    }
+
+    if (dateInput.value === "")
+    {
+        dateInputError.textContent = "Please select a date.";
+        isValid = false;
+    }
+
+    if (categoryInput.value === "")
+    {
+        categoryInputError.textContent = "Please select a category.";
+        isValid = false;
+    }
+
+    if (contentInput.value.trim() === "")
+    {
+        contentInputError.textContent = "Please enter some content.";
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+
 function savePosts() {
     localStorage.setItem(localPosts, JSON.stringify(posts));
 }
 
-function renderPosts()
-{
-    postsContainer.innerHTML ="";
-    posts.forEach(function (post){
+function renderPosts() {
+    postsContainer.innerHTML = "";
+    posts.forEach(function (post) {
         displayPost(post);
     });
 }
@@ -98,6 +136,11 @@ console.log(JSON.parse(localStorage.getItem(localPosts)));
 postForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
+    if(!validateForm())
+    {
+        return;
+    }
+
     const title = titleInput.value;
     const date = dateInput.value;
     const category = categoryInput.value;
@@ -124,11 +167,9 @@ postForm.addEventListener("submit", function (event) {
 
         posts.push(newPost);
         console.log(newPost);
-    } 
-    else
-    {
-        const postToEdit = posts.find(function (post)
-        {
+    }
+    else {
+        const postToEdit = posts.find(function (post) {
             return post.id === editingPostId;
         });
         postToEdit.title = title;
