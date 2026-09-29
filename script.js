@@ -60,7 +60,13 @@ function savePosts() {
     localStorage.setItem(localPosts, JSON.stringify(posts));
 }
 
-
+function renderPosts()
+{
+    postsContainer.innerHTML ="";
+    posts.forEach(function (post){
+        displayPost(post);
+    });
+}
 
 function loadPosts() {
     const storedPosts = localStorage.getItem(localPosts);
@@ -73,10 +79,11 @@ function loadPosts() {
             if (!post.id) {
                 post.id = Date.now() + Math.random();
             }
-            displayPost(post);
+            // displayPost(post);
         });
 
         savePosts();
+        renderPosts();
     }
 }
 
@@ -132,6 +139,7 @@ postForm.addEventListener("submit", function (event) {
 
 
     savePosts();
+    renderPosts();
     // displayPost(newPost);
     postForm.reset();
     editingPostId = null;
