@@ -51,12 +51,16 @@ const ContainerInputError = document.getElementById("container-error");
 
 let posts = [];
 
+let editingPostId = null;
+
 const localPosts = "notesCenterPosts";
 
 
 function savePosts() {
     localStorage.setItem(localPosts, JSON.stringify(posts));
 }
+
+
 
 function loadPosts() {
     const storedPosts = localStorage.getItem(localPosts);
@@ -99,19 +103,38 @@ postForm.addEventListener("submit", function (event) {
     // console.log(category);
     // console.log(content);
 
-    const newPost = {
-        id: Date.now(),
-        title: title,
-        date: date,
-        category: category,
-        content: content,
-    };
+    if (editingPostId === null) {
 
-    posts.push(newPost);
-    console.log(newPost);
+
+
+        const newPost = {
+            id: Date.now(),
+            title: title,
+            date: date,
+            category: category,
+            content: content,
+        };
+
+        posts.push(newPost);
+        console.log(newPost);
+    } 
+    else
+    {
+        const postToEdit = posts.find(function (post)
+        {
+            return post.id === editingPostId;
+        });
+        postToEdit.title = title;
+        postToEdit.date = date;
+        postToEdit.category = category;
+        postToEdit.content = content;
+    }
+
+
     savePosts();
-    displayPost(newPost);
+    // displayPost(newPost);
     postForm.reset();
+    editingPostId = null;
 });
 
 function displayPost(post) {
@@ -138,11 +161,19 @@ function displayPost(post) {
     editButton.addEventListener("click", function () {
         const selectedID = Number(editButton.dataset.id);
 
+        editingPostId = selectedID;
+
+        console.log(editingPostId);
+
         const postToEdit = posts.find(function (post) {
             return post.id === selectedID;
 
         });
         console.log(postToEdit);
+        titleInput.value = postToEdit.title;
+        dateInput.value = postToEdit.date;
+        categoryInput.value = postToEdit.category;
+        contentInput.value = postToEdit.content;
     });
 
     const deleteButton = document.createElement("button");
