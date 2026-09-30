@@ -10,22 +10,26 @@
 </head>
 
 <body>
-    <h1>My Notes Center</h1>
+    
+    <img class = "background-image" src="images/image3.png" alt="An orange Border image ">
+    <img src="images/image1.png" alt="Motivational image with a quote">
+    <h1>DJ's Notes Center</h1>
     <!-- An Interactive Personal Blog Platform -->
-    <p>A place to keep my tasks , thoughts and tech notes</p>
+    <p>A place to keep my tasks , thoughts and tech notes ....</p>
 
     <section class="main-container">
+
         <h2>Create a New Post</h2>
 
         <form id="post-form">
 
             <label for="post-title">Title</label>
             <input type="text" id="post-title" name="post-title" placeholder="Enter a title">
-            <span  id="title-error"></span>
+            <span  id="title-error" class="error-message"></span>
 
             <label for="post-date">Date</label>
             <input type="date" id="post-date" name="post-date" >
-            <span id ="date-error"></span>
+            <span id ="date-error" class="error-message"></span>
 
             <label for="post-category">Category</label>
             <select id="post-category" name="post-category">
@@ -35,14 +39,14 @@
                 <option value="tech">Tech</option>
             </select>
 
-            <span id ="category-error"></span>
+            <span id ="category-error" class="error-message"></span>
 
             <div>
                 <label for="post-content">Content</label>
                 <textarea id ="post-content" name="post-content" rows="8" placeholder ="Write your thoughts here..."></textarea>
             </div>
 
-            <span id ="content-error"></span>
+            <span id ="content-error" class="error-message"></span>
 
             <button type="submit" id ="publish-button">Publish Post</button>
 
