@@ -1,3 +1,7 @@
+body{
+    background-color:#f7eeac;
+}
+
 .error-message {
     color: red;
     display: block;
@@ -10,27 +14,27 @@ section {
     padding: 20px;
     margin: 20px auto;
     max-width: 800px;
-    border: 1px solid orangered;
+    border: 3px solid orangered;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 body > img {
     width: 180px;
     display: block;
     margin: 25px auto 10px;
+    overflow:hidden;
 }
 
 img {
-    width: 20%;
+    width: 40%;
 }
-
-
 
 h1 {
     text-align: right;
     margin-bottom: 30px;
-}
+    padding: 0 80px;    
+} 
 
 body > p {
     text-align: center;
@@ -42,6 +46,7 @@ form {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    background-color: #fff9c4;
 }
 
 input,
@@ -68,31 +73,52 @@ button {
     cursor: pointer;
 }
 
-/* .container {
-    display: flex;
-    align-items: center;
-    /* Vertically aligns image and text in the middle */
-    /* gap: 20px; */
-    /* Adds space between the image and the text } */
+#publish-button {
+    background-color: orangered;
+    color: white;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    align-self: flex-end;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+#publish-button:hover {
+    background-color: darkorange;
+}
 
 .post {
-    background-color: rgba(255, 255, 255, 0.95);
-    /* background-color: white; */
-    padding: 20px;
+    background-color: #fff9c4;
+    padding: 22px;
     margin: 20px 0;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.15);
+    border: 1px solid #eee3a5;
 }
 
 .post h3 {
     margin-top: 0;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .post p {
     line-height: 1.6;
     margin: 8px 0;
+}
+
+.post p:nth-of-type(1),
+.post p:nth-of-type(2) {
+    font-size: 14px;
+    color: #666;
+}
+
+.post button {
+    padding: 8px 14px;
+    margin-right: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
 }
 
 .background-image {
