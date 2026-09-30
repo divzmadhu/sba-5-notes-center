@@ -128,10 +128,6 @@ function loadPosts() {
 
 
 console.log(JSON.parse(localStorage.getItem(localPosts)));
-// if(storedPosts)
-// {
-//     posts = JSON.parse(storedPosts);
-// }
 
 postForm.addEventListener("submit", function (event) {
     event.preventDefault();
